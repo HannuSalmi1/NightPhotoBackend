@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NightPhotoBackend.Models;
 
-public partial class UsersTable
+public partial class UserModel
 {
     public int Id { get; set; }
 

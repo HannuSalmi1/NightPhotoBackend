@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NightPhotoBackend.Models;
+using NightPhotoBackend.Services;
 
 namespace NightPhotoBackend.Controllers
 {
@@ -15,14 +16,17 @@ namespace NightPhotoBackend.Controllers
     {
         private readonly NightPhotoDbContext _context;
 
-        public UsersController(NightPhotoDbContext context)
+        private readonly IFolderCreator _folderCreator;
+
+        public UsersController(NightPhotoDbContext context, IFolderCreator folderCreator)
         {
             _context = context;
+            _folderCreator = folderCreator;
         }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UsersTable>>> GetUsersTables()
+        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsersTables()
         {
           if (_context.UsersTables == null)
           {
@@ -33,7 +37,7 @@ namespace NightPhotoBackend.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UsersTable>> GetUsersTable(int id)
+        public async Task<ActionResult<UserModel>> GetUsersTable(int id)
         {
           if (_context.UsersTables == null)
           {
@@ -52,7 +56,7 @@ namespace NightPhotoBackend.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsersTable(int id, UsersTable usersTable)
+        public async Task<IActionResult> PutUsersTable(int id, UserModel usersTable)
         {
             if (id != usersTable.Id)
             {
@@ -83,16 +87,18 @@ namespace NightPhotoBackend.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UsersTable>> PostUsersTable(UsersTable usersTable)
+        public async Task<ActionResult<UserModel>> PostUsersTable(UserModel userModel)
         {
           if (_context.UsersTables == null)
           {
               return Problem("Entity set 'NightPhotoDbContext.UsersTables'  is null.");
           }
-            _context.UsersTables.Add(usersTable);
+            
+            _folderCreator.CreateFolder(userModel);
+            _context.UsersTables.Add(userModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsersTable", new { id = usersTable.Id }, usersTable);
+            return CreatedAtAction("GetUsersTable", new { id = userModel.Id }, userModel);
         }
 
         // DELETE: api/Users/5
@@ -125,6 +131,7 @@ namespace NightPhotoBackend.Controllers
         {
             if (file != null && file.Length > 0)
             {
+                
                 var fileName = Path.GetFileName(file.FileName);
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
 
