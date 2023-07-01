@@ -119,5 +119,23 @@ namespace NightPhotoBackend.Controllers
         {
             return (_context.UsersTables?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        [HttpPost("UploadImage")]
+        public async Task<IActionResult> UploadImage(IFormFile file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+            }
+
+            return Ok();
+        }
+
     }
 }
