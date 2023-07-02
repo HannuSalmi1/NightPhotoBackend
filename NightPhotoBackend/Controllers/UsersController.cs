@@ -28,22 +28,22 @@ namespace NightPhotoBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsersTables()
         {
-          if (_context.UsersTables == null)
-          {
-              return NotFound();
-          }
-            return await _context.UsersTables.ToListAsync();
+            if (_context.UsersTable == null)
+            {
+                return NotFound();
+            }
+            return await _context.UsersTable.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserModel>> GetUsersTable(int id)
         {
-          if (_context.UsersTables == null)
-          {
-              return NotFound();
-          }
-            var usersTable = await _context.UsersTables.FindAsync(id);
+            if (_context.UsersTable == null)
+            {
+                return NotFound();
+            }
+            var usersTable = await _context.UsersTable.FindAsync(id);
 
             if (usersTable == null)
             {
@@ -89,13 +89,13 @@ namespace NightPhotoBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<UserModel>> PostUsersTable(UserModel userModel)
         {
-          if (_context.UsersTables == null)
-          {
-              return Problem("Entity set 'NightPhotoDbContext.UsersTables'  is null.");
-          }
-            
+            if (_context.UsersTable == null)
+            {
+                return Problem("Entity set 'NightPhotoDbContext.UsersTables'  is null.");
+            }
+
             _folderCreator.CreateFolder(userModel);
-            _context.UsersTables.Add(userModel);
+            _context.UsersTable.Add(userModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUsersTable", new { id = userModel.Id }, userModel);
@@ -105,17 +105,17 @@ namespace NightPhotoBackend.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsersTable(int id)
         {
-            if (_context.UsersTables == null)
+            if (_context.UsersTable == null)
             {
                 return NotFound();
             }
-            var usersTable = await _context.UsersTables.FindAsync(id);
+            var usersTable = await _context.UsersTable.FindAsync(id);
             if (usersTable == null)
             {
                 return NotFound();
             }
 
-            _context.UsersTables.Remove(usersTable);
+            _context.UsersTable.Remove(usersTable);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -123,7 +123,7 @@ namespace NightPhotoBackend.Controllers
 
         private bool UsersTableExists(int id)
         {
-            return (_context.UsersTables?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.UsersTable?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         [HttpPost("UploadImage")]
@@ -131,7 +131,7 @@ namespace NightPhotoBackend.Controllers
         {
             if (file != null && file.Length > 0)
             {
-                
+
                 var fileName = Path.GetFileName(file.FileName);
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
 
@@ -142,6 +142,20 @@ namespace NightPhotoBackend.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpPost("SignIn")]
+        public void SignIn(UserModel user)
+        {
+            var dbUser = _context.UsersTable.FirstOrDefault(u => u.Username == user.Username);
+            if (dbUser != null && dbUser.Password == user.Password)
+            {
+                Console.WriteLine("Success");
+            }
+            else
+            {
+                Console.WriteLine("Failure");
+            }
         }
 
     }
