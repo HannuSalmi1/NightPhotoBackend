@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NightPhotoBackend.Entities;
 using NightPhotoBackend.Models;
 using NightPhotoBackend.Services;
 
@@ -18,15 +15,18 @@ namespace NightPhotoBackend.Controllers
 
         private readonly IFolderCreator _folderCreator;
 
-        public UsersController(NightPhotoDbContext context, IFolderCreator folderCreator)
+        private readonly IUserservice _userService;
+
+        public UsersController(NightPhotoDbContext context, IFolderCreator folderCreator, IUserservice userService)
         {
             _context = context;
             _folderCreator = folderCreator;
+            _userService = userService;
         }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsersTables()
+        public async Task<ActionResult<IEnumerable<UserEntity>>> GetUsersTables()
         {
             if (_context.UsersTable == null)
             {
@@ -37,7 +37,7 @@ namespace NightPhotoBackend.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserModel>> GetUsersTable(int id)
+        public async Task<ActionResult<UserEntity>> GetUsersTable(int id)
         {
             if (_context.UsersTable == null)
             {
@@ -56,7 +56,7 @@ namespace NightPhotoBackend.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsersTable(int id, UserModel usersTable)
+        public async Task<IActionResult> PutUsersTable(int id, UserEntity usersTable)
         {
             if (id != usersTable.Id)
             {
@@ -87,7 +87,7 @@ namespace NightPhotoBackend.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostUsersTable(UserModel userModel)
+        public async Task<ActionResult<UserEntity>> PostUsersTable(UserEntity userModel)
         {
             if (_context.UsersTable == null)
             {
@@ -144,19 +144,18 @@ namespace NightPhotoBackend.Controllers
             return Ok();
         }
 
-        [HttpPost("SignIn")]
-        public void SignIn(UserModel user)
+
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var dbUser = _context.UsersTable.FirstOrDefault(u => u.Username == user.Username);
-            if (dbUser != null && dbUser.Password == user.Password)
-            {
-                Console.WriteLine("Success");
-            }
-            else
-            {
-                Console.WriteLine("Failure");
-            }
+            var response = _userService.Authenticate(model);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
         }
+
 
     }
 }

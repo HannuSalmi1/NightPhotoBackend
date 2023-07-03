@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace NightPhotoBackend.Models;
+namespace NightPhotoBackend.Entities;
 
 public partial class NightPhotoDbContext : DbContext
 {
@@ -15,7 +13,7 @@ public partial class NightPhotoDbContext : DbContext
     {
     }
 
-    public virtual DbSet<UserModel> UsersTable { get; set; }
+    public virtual DbSet<UserEntity> UsersTable { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -23,7 +21,7 @@ public partial class NightPhotoDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<UserModel>(entity =>
+        modelBuilder.Entity<UserEntity>(entity =>
         {
             entity.ToTable("UsersTable");
 

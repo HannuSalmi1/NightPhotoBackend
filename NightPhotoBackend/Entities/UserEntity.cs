@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace NightPhotoBackend.Entities;
 
-namespace NightPhotoBackend.Models;
-
-public partial class UserModel
+public partial class UserEntity
 {
     public int Id { get; set; }
 

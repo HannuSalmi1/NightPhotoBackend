@@ -1,10 +1,10 @@
-﻿using NightPhotoBackend.Models;
+﻿using NightPhotoBackend.Entities;
 
 namespace NightPhotoBackend.Services
 {
     public class FolderCreator : IFolderCreator
     {
-        public void CreateFolder(UserModel user)
+        public void CreateFolder(UserEntity user)
         {
             if (user.Username == null)
             {
@@ -17,7 +17,7 @@ namespace NightPhotoBackend.Services
                 Console.WriteLine(folderPath);
                 Directory.CreateDirectory(folderPath);
             }
-            
+
         }
     }
 }
