@@ -1,9 +1,9 @@
-﻿using NightPhotoBackend.Models;
+﻿using NightPhotoBackend.Entities;
 
 namespace NightPhotoBackend.Services
 {
     public interface IFolderCreator
     {
-        void CreateFolder(UserModel model);
+        void CreateFolder(UserEntity model);
     }
 }
