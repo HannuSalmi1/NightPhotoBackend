@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NightPhotoBackend.Entities;
 using NightPhotoBackend.Helpers;
 using NightPhotoBackend.Services;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,23 @@ builder.Services.AddScoped<IUserservice, UserService>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 
+var secretKey = builder.Configuration["AppSettings:Secret"];
+var tokenValidationParameters = new TokenValidationParameters
+{
+    ValidateIssuer = true,
+    ValidateAudience = false,
+    ValidateLifetime = true,
+    ValidateIssuerSigningKey = true,
+    ValidIssuer = "NightPhotoServer",
+    ValidAudience = "YourValidAudience",
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+};
+
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = tokenValidationParameters;
+});
+
 builder.Services.AddControllers();
 
 
@@ -25,6 +44,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 
