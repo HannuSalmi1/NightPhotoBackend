@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using NightPhotoBackend.Entities;
 using NightPhotoBackend.Models;
 using NightPhotoBackend.Services;
+using System.Linq;
 
 namespace NightPhotoBackend.Controllers
 {
@@ -18,11 +20,15 @@ namespace NightPhotoBackend.Controllers
 
         private readonly IUserservice _userService;
 
-        public UsersController(NightPhotoDbContext context, IFolderCreator folderCreator, IUserservice userService)
+        private readonly ILogger<UsersController> _logger;
+
+        public UsersController(NightPhotoDbContext context,
+            IFolderCreator folderCreator, IUserservice userService, ILogger<UsersController> logger)
         {
             _context = context;
             _folderCreator = folderCreator;
             _userService = userService;
+            _logger = logger;
         }
 
         // GET: api/Users
@@ -89,18 +95,31 @@ namespace NightPhotoBackend.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserEntity>> PostUsersTable(UserEntity userModel)
+        public async Task<ActionResult<UserEntity>> PostUsersTable(UserEntity userTable)
         {
+            //
             if (_context.UsersTable == null)
             {
                 return Problem("Entity set 'NightPhotoDbContext.UsersTables'  is null.");
             }
 
-            _folderCreator.CreateFolder(userModel);
-            _context.UsersTable.Add(userModel);
-            await _context.SaveChangesAsync();
+            var duplicate = _context.UsersTable.SingleOrDefault(x => x.Username == userTable.Username);
+           
+            if (duplicate != null) 
+            {
+                _logger.LogInformation("testingtesting1212121 -->" + duplicate.ToString());
+                return Problem("Username already taken");
+            }
+                
+            
 
-            return CreatedAtAction("GetUsersTable", new { id = userModel.Id }, userModel);
+            await Console.Out.WriteLineAsync();
+
+            _folderCreator.CreateFolder(userTable);
+            _context.UsersTable.Add(userTable);
+            await _context.SaveChangesAsync();
+            
+            return CreatedAtAction("GetUsersTable", new { id = userTable.Id }, userTable);
         }
 
         // DELETE: api/Users/5
