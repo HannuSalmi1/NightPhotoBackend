@@ -1,6 +1,6 @@
 ﻿using NightPhotoBackend.Entities;
 
-namespace NightPhotoBackend.Models
+namespace NightPhotoBackend.Dto
 {
     public class AuthenticateResponse
     {
