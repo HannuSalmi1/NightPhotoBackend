@@ -7,6 +7,7 @@ using NightPhotoBackend.Entities;
 using NightPhotoBackend.Models;
 using NightPhotoBackend.Services;
 using System.Linq;
+using System.Security.Claims;
 
 namespace NightPhotoBackend.Controllers
 {
@@ -147,14 +148,17 @@ namespace NightPhotoBackend.Controllers
             return (_context.UsersTable?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
+        [Authorize]
         [HttpPost("UploadImage")]
         public async Task<IActionResult> UploadImage(IFormFile file)
         {
+            var userName = User.FindFirstValue("username");
             if (file != null && file.Length > 0)
             {
-
+                
                 var fileName = Path.GetFileName(file.FileName);
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                                "wwwroot\\images", userName, fileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
