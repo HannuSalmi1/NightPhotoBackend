@@ -44,6 +44,13 @@ namespace NightPhotoBackend.Controllers
             return await _context.UsersTable.ToListAsync();
         }
 
+        [HttpGet("getImages")]
+        public async Task<ActionResult<IEnumerable<string>>> GetImages()
+        {
+
+            return _folderCreator.RetrieveImagesPaths();
+        }
+
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserEntity>> GetUsersTable(int id)

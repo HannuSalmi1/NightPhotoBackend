@@ -1,4 +1,6 @@
 ﻿using NightPhotoBackend.Entities;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace NightPhotoBackend.Services
 {
@@ -18,6 +20,26 @@ namespace NightPhotoBackend.Services
                 Directory.CreateDirectory(folderPath);
             }
 
+        }
+        public List <string> RetrieveImagesPaths()
+        {
+            string path = "wwwroot\\Images\\";
+            List<string> imagePaths = new List<string>();
+            var paths = Directory.GetDirectories(path);
+            
+            foreach(string folder in paths)
+            {
+               
+                var files = Directory.GetFiles(folder);
+                foreach (string file in files)
+                { imagePaths.Add(file); }
+               
+            }
+
+            
+            return imagePaths;
+
+          
         }
     }
 }

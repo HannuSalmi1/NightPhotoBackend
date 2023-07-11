@@ -5,7 +5,17 @@ using NightPhotoBackend.Helpers;
 using NightPhotoBackend.Services;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000");
+        });
+});
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
@@ -45,9 +55,10 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
 
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors();
 app.Run();
