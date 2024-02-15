@@ -1,6 +1,6 @@
 ﻿namespace NightPhotoBackend.Entities;
 
-public partial class UserEntity
+public partial class UserModel
 {
     public int Id { get; set; }
 

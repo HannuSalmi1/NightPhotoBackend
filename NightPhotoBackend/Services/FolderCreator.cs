@@ -6,7 +6,7 @@ namespace NightPhotoBackend.Services
 {
     public class FolderCreator : IFolderCreator
     {
-        public void CreateFolder(UserEntity user)
+        public void CreateFolder(UserModel user)
         {
             if (user.Username == null)
             {

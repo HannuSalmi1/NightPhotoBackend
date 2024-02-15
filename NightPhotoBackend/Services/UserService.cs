@@ -35,17 +35,17 @@ namespace NightPhotoBackend.Services
         }
 
 
-        public IEnumerable<UserEntity> GetAll()
+        public IEnumerable<UserModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public UserEntity GetById(int id)
+        public UserModel GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        private string generateJwtToken(UserEntity user)
+        private string generateJwtToken(UserModel user)
         {
             // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();

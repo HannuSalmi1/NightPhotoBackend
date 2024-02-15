@@ -35,7 +35,7 @@ namespace NightPhotoBackend.Controllers
         // GET: api/Users
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserEntity>>> GetUsersTables()
+        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsersTables()
         {
             if (_context.UsersTable == null)
             {
@@ -53,7 +53,7 @@ namespace NightPhotoBackend.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserEntity>> GetUsersTable(int id)
+        public async Task<ActionResult<UserModel>> GetUsersTable(int id)
         {
             if (_context.UsersTable == null)
             {
@@ -72,7 +72,7 @@ namespace NightPhotoBackend.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsersTable(int id, UserEntity usersTable)
+        public async Task<IActionResult> PutUsersTable(int id, UserModel usersTable)
         {
             if (id != usersTable.Id)
             {
@@ -103,7 +103,7 @@ namespace NightPhotoBackend.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserEntity>> PostUsersTable(UserEntity userTable)
+        public async Task<ActionResult<UserModel>> PostUsersTable(UserModel userTable)
         {
             //
             if (_context.UsersTable == null)

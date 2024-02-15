@@ -8,8 +8,8 @@ namespace NightPhotoBackend.Services
     {
 
         AuthenticateResponse Authenticate(AuthenticateRequest model);
-        IEnumerable<UserEntity> GetAll();
-        UserEntity GetById(int id);
+        IEnumerable<UserModel> GetAll();
+        UserModel GetById(int id);
 
     }
 }
