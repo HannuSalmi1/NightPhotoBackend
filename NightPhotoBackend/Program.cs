@@ -7,12 +7,13 @@ using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
+    options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
+            policy.AllowAnyHeader();
             policy.WithOrigins("http://localhost:3000");
         });
 });
@@ -60,5 +61,5 @@ app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseCors();
+app.UseCors(MyAllowSpecificOrigins);
 app.Run();
