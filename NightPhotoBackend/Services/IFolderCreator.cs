@@ -4,7 +4,7 @@ namespace NightPhotoBackend.Services
 {
     public interface IFolderCreator
     {
-        void CreateFolder(UserEntity model);
+        void CreateFolder(UserModel model);
 
         public List<string> RetrieveImagesPaths();
     }
