@@ -11,13 +11,13 @@ namespace NightPhotoBackend.Dto
         public string Token { get; set; }
 
 
-        public AuthenticateResponse(UserEntity user, string token)
+        public AuthenticateResponse(UserEntity user)
         {
             Id = user.Id;
             FirstName = user.Firstname;
             LastName = user.Lastname;
             Username = user.Username;
-            Token = token;
+            
         }
     }
 }

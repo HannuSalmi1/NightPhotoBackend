@@ -17,7 +17,8 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("http://localhost:3000");
         });
 });
-
+builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 
@@ -28,7 +29,7 @@ builder.Services.AddDbContext<NightPhotoDbContext>(options =>
 builder.Services.AddScoped<IFolderCreator, FolderCreator>();
 builder.Services.AddScoped<IUserservice, UserService>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
-
+builder.Services.AddScoped<IResponseCookies,  ResponseCookies>();
 
 var secretKey = builder.Configuration["AppSettings:Secret"];
 var tokenValidationParameters = new TokenValidationParameters
@@ -52,8 +53,11 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
+if (app.Environment.IsDevelopment()) // by default enabled only for dev.
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
