@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using NightPhotoBackend.Entities;
+using NightPhotoBackend.Models;
 using NightPhotoBackend.Helpers;
 using NightPhotoBackend.Services;
 using System.Text;
