@@ -1,4 +1,4 @@
-﻿using NightPhotoBackend.Entities;
+﻿using NightPhotoBackend.Models;
 using System.Collections.Generic;
 using System.Drawing;
 

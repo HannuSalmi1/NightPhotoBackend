@@ -1,4 +1,4 @@
-﻿namespace NightPhotoBackend.Entities;
+﻿namespace NightPhotoBackend.Models;
 
 public partial class UserModel
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NightPhotoBackend.Dto;
-using NightPhotoBackend.Entities;
+
 using NightPhotoBackend.Helpers;
 using NightPhotoBackend.Models;
 using System.IdentityModel.Tokens.Jwt;
@@ -35,7 +35,7 @@ namespace NightPhotoBackend.Services
             var token = generateJwtToken(user);
             _responseCookies.Append("access_token", token);
 
-            return new AuthenticateResponse(user);
+            return new AuthenticateResponse(user, token);
         }
 
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace NightPhotoBackend.Entities;
+namespace NightPhotoBackend.Models;
 
 public partial class NightPhotoDbContext : DbContext
 {

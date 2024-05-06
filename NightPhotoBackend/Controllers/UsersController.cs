@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using NightPhotoBackend.Entities;
+
 using NightPhotoBackend.Models;
 using NightPhotoBackend.Services;
 using System.Linq;
