@@ -15,23 +15,27 @@ namespace NightPhotoBackend.Services
 
         private readonly NightPhotoDbContext _context;
         private readonly AppSettings _appSettings;
-        public UserService(NightPhotoDbContext context, IOptions<AppSettings> appSettings)
+        private readonly IResponseCookies _responseCookies;
+       
+        
+        public UserService(NightPhotoDbContext context, IOptions<AppSettings> appSettings, IResponseCookies responseCookies)
         {
             _context = context;
             _appSettings = appSettings.Value;
+            _responseCookies = responseCookies;
+            
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
             var user = _context.UsersTable.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
 
-            // return null if user not found
             if (user == null) return null;
 
-            // authentication successful so generate jwt token
             var token = generateJwtToken(user);
+            _responseCookies.Append("access_token", token);
 
-            return new AuthenticateResponse(user, token);
+            return new AuthenticateResponse(user);
         }
 
 
@@ -47,7 +51,7 @@ namespace NightPhotoBackend.Services
 
         private string generateJwtToken(UserModel user)
         {
-            // generate token that is valid for 7 days
+            
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
