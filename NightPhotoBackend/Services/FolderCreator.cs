@@ -21,25 +21,26 @@ namespace NightPhotoBackend.Services
             }
 
         }
-        public List <string> RetrieveImagesPaths()
+        public List<string> RetrieveImagesPaths()
         {
-            string path = "wwwroot\\Images\\";
+            string path = Path.Combine("wwwroot", "Images");
             List<string> imagePaths = new List<string>();
             var paths = Directory.GetDirectories(path);
-            
-            foreach(string folder in paths)
+
+            foreach (string folder in paths)
             {
-               
+
                 var files = Directory.GetFiles(folder);
                 foreach (string file in files)
                 { imagePaths.Add(file); }
-               
+
             }
 
-            
+
             return imagePaths;
 
-          
+
         }
+
     }
 }

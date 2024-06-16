@@ -43,7 +43,12 @@ namespace NightPhotoBackend.Controllers
             }
             return await _context.UsersTable.ToListAsync();
         }
+        [HttpGet("test")]
+        public string Testaus()
+        {
 
+            return "<h1> ONNISTUI HYVÄ HOMMA </h1>";
+        }
         [HttpGet("getImages")]
         public async Task<ActionResult<IEnumerable<string>>> GetImages()
         {

@@ -1,0 +1,19 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  background-color: #1D1C70;
+}
+
+.navbar-brand-custom {
+  color: #FFB300;
+}
+
+.nav-link-custom {
+  color: yourColorHere; /* Replace with your desired color */
+}
+

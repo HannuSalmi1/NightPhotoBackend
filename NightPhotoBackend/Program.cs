@@ -5,21 +5,7 @@ using NightPhotoBackend.Helpers;
 using NightPhotoBackend.Services;
 using System.Text;
 
-
 var builder = WebApplication.CreateBuilder(args);
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy =>
-        {
-            policy.AllowAnyHeader();
-            policy.WithOrigins("http://localhost:3000");
-        });
-});
-builder.Services.AddSwaggerGen();
-builder.Services.AddEndpointsApiExplorer();
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 
 // Add services to the container.
@@ -29,7 +15,19 @@ builder.Services.AddDbContext<NightPhotoDbContext>(options =>
 builder.Services.AddScoped<IFolderCreator, FolderCreator>();
 builder.Services.AddScoped<IUserservice, UserService>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
-builder.Services.AddScoped<IResponseCookies,  ResponseCookies>();
+builder.Services.AddScoped<IResponseCookies, ResponseCookies>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("reactfrontend", policyBuilder =>
+    {
+        
+        policyBuilder.AllowAnyHeader();
+        policyBuilder.AllowAnyMethod();
+        policyBuilder.AllowAnyOrigin();
+        
+    });
+});
 
 var secretKey = builder.Configuration["AppSettings:Secret"];
 var tokenValidationParameters = new TokenValidationParameters
@@ -51,19 +49,27 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
 builder.Services.AddControllers();
 
 
+builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
 var app = builder.Build();
+
+
 
 if (app.Environment.IsDevelopment()) // by default enabled only for dev.
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
+app.UseAuthentication(); // Ensure UseAuthentication is called before UseAuthorization
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseCors(MyAllowSpecificOrigins);
+
+app.UseCors("reactfrontend");
+
 app.Run();
