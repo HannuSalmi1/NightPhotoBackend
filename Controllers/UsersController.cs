@@ -47,7 +47,7 @@ namespace NightPhotoBackend.Controllers
         public string Testaus()
         {
 
-            return "<h1> ONNISTUI HYVÄ HOMMA </h1>";
+            return "<h1> ONNISTUI HYVÄ HOMMA hhhh </h1>";
         }
         [HttpGet("getImages")]
         public async Task<ActionResult<IEnumerable<string>>> GetImages()
