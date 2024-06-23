@@ -21,10 +21,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("reactfrontend", policyBuilder =>
     {
-        
+        policyBuilder.WithOrigins("http://localhost:3000");
         policyBuilder.AllowAnyHeader();
         policyBuilder.AllowAnyMethod();
-        policyBuilder.AllowAnyOrigin();
+        
         
     });
 });
