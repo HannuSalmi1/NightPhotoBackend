@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\ateena\\kuva3.jpg",
+      "PackagePath": "staticwebassets\\Images\\ateena\\kuva3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\ateena\\kuva4.jpg",
+      "PackagePath": "staticwebassets\\Images\\ateena\\kuva4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\halloumi\\kuvatesti.jpg",
+      "PackagePath": "staticwebassets\\Images\\halloumi\\kuvatesti.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\kypros\\kuukuva.jpg",
+      "PackagePath": "staticwebassets\\Images\\kypros\\kuukuva.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\kypros\\kuva2.jpg",
+      "PackagePath": "staticwebassets\\Images\\kypros\\kuva2.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.NightPhotoBackend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.NightPhotoBackend.props",
+      "PackagePath": "build\\NightPhotoBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.NightPhotoBackend.props",
+      "PackagePath": "buildMultiTargeting\\NightPhotoBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.NightPhotoBackend.props",
+      "PackagePath": "buildTransitive\\NightPhotoBackend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
