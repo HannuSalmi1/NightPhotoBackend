@@ -33,7 +33,18 @@ namespace NightPhotoBackend.Services
             if (user == null) return null;
 
             var token = generateJwtToken(user);
-            _responseCookies.Append("access_token", token);
+
+            // Create a cookie option
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true, // This makes the cookie HttpOnly
+                Secure = true, // Transmit the cookie over HTTPS only
+                SameSite = SameSiteMode.Strict, // Prevents the browser from sending this cookie along with cross-site requests
+                Expires = DateTime.UtcNow.AddDays(7) // Set the expiration date
+            };
+
+            // Append the JWT as a cookie
+            _responseCookies.Append("access_token", token, cookieOptions);
 
             return new AuthenticateResponse(user, token);
         }

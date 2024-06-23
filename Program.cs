@@ -16,7 +16,7 @@ builder.Services.AddScoped<IFolderCreator, FolderCreator>();
 builder.Services.AddScoped<IUserservice, UserService>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddScoped<IResponseCookies, ResponseCookies>();
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("reactfrontend", policyBuilder =>
