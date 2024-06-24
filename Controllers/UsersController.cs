@@ -192,7 +192,15 @@ namespace NightPhotoBackend.Controllers
 
             return Ok(response);
         }
-
+        // GET: api/checkValidity
+        [Authorize]
+        [HttpGet("checkValidity")]
+        public IActionResult CheckValidity()
+        {
+            // If the request reaches this point, it means the JWT token is valid
+            var response = new { message = "JWT is valid" };
+            return Ok(response); // This will return a JSON response
+        }
 
     }
 }
