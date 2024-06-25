@@ -12,18 +12,17 @@ namespace NightPhotoBackend.Services
 {
     public class UserService : IUserservice
     {
-
         private readonly NightPhotoDbContext _context;
         private readonly AppSettings _appSettings;
         private readonly IResponseCookies _responseCookies;
+        private readonly IConfiguration _configuration;
 
-
-        public UserService(NightPhotoDbContext context, IOptions<AppSettings> appSettings, IResponseCookies responseCookies)
+        public UserService(NightPhotoDbContext context, IOptions<AppSettings> appSettings, IResponseCookies responseCookies, IConfiguration configuration)
         {
             _context = context;
             _appSettings = appSettings.Value;
             _responseCookies = responseCookies;
-
+            _configuration = configuration;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
@@ -49,7 +48,6 @@ namespace NightPhotoBackend.Services
             return new AuthenticateResponse(user);
         }
 
-
         public IEnumerable<UserModel> GetAll()
         {
             throw new NotImplementedException();
@@ -62,16 +60,16 @@ namespace NightPhotoBackend.Services
 
         private string generateJwtToken(UserModel user)
         {
-
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("rockandrollaaaaasssddd");
+            var appSecret = _configuration.GetSection("AppSettings:Secret").Value;
+            var key = Encoding.ASCII.GetBytes(appSecret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                new Claim("username", user.Username.ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-                }),
+                        new Claim("username", user.Username.ToString()),
+                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = "NightPhotoServer"

@@ -127,6 +127,7 @@ C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\pub
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\published\published\published\published\published\published\published\published\published\published\published\published\published\NightPhotoBackend.runtimeconfig.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\NightPhotoBackend.staticwebassets.runtime.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\NightPhotoBackend.exe
+C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\appsettings.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\NightPhotoBackend.deps.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\NightPhotoBackend.runtimeconfig.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\NightPhotoBackend.dll
@@ -373,9 +374,9 @@ C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\staticwebasse
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.NightPhotoBackend.props
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\staticwebassets.pack.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\scopedcss\bundle\NightPhotoBackend.styles.css
+C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\NightPho.ECB491B8.Up2Date
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\NightPhotoBackend.dll
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\refint\NightPhotoBackend.dll
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\NightPhotoBackend.pdb
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\NightPhotoBackend.genruntimeconfig.cache
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\ref\NightPhotoBackend.dll
-C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\NightPho.ECB491B8.Up2Date
