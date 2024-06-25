@@ -13,10 +13,6 @@ C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\pub
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\published\web.config
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\web.config
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\appsettings.Development.json
-C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\Models\nightphotofrontend\.eslintrc.json
-C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\Models\nightphotofrontend\jsconfig.json
-C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\Models\nightphotofrontend\package-lock.json
-C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\Models\nightphotofrontend\package.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\appsettings.Development.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\appsettings.json
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\bin\Debug\net7.0\published\Models\nightphotofrontend\.eslintrc.json

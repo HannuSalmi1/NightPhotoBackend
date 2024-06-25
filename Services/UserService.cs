@@ -16,14 +16,14 @@ namespace NightPhotoBackend.Services
         private readonly NightPhotoDbContext _context;
         private readonly AppSettings _appSettings;
         private readonly IResponseCookies _responseCookies;
-       
-        
+
+
         public UserService(NightPhotoDbContext context, IOptions<AppSettings> appSettings, IResponseCookies responseCookies)
         {
             _context = context;
             _appSettings = appSettings.Value;
             _responseCookies = responseCookies;
-            
+
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
@@ -39,14 +39,14 @@ namespace NightPhotoBackend.Services
             {
                 HttpOnly = true, // This makes the cookie HttpOnly
                 Secure = true, // Transmit the cookie over HTTPS only
-                SameSite = SameSiteMode.Strict, // Prevents the browser from sending this cookie along with cross-site requests
+                SameSite = SameSiteMode.None,
                 Expires = DateTime.UtcNow.AddDays(7) // Set the expiration date
             };
 
             // Append the JWT as a cookie
             _responseCookies.Append("access_token", token, cookieOptions);
 
-            return new AuthenticateResponse(user, token);
+            return new AuthenticateResponse(user);
         }
 
 
@@ -62,16 +62,16 @@ namespace NightPhotoBackend.Services
 
         private string generateJwtToken(UserModel user)
         {
-            
+
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes("rockandrollaaaaasssddd");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-            new Claim("username", user.Username.ToString()),
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-            }),
+                new Claim("username", user.Username.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = "NightPhotoServer"
