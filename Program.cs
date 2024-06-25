@@ -21,14 +21,14 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("reactfrontend", policyBuilder =>
     {
-        policyBuilder.WithOrigins("http://localhost:3000");
+        policyBuilder.WithOrigins("https://localhost:3000");
         policyBuilder.AllowAnyHeader();
         policyBuilder.AllowAnyMethod();
         policyBuilder.AllowCredentials();
     });
 });
 
-var secretKey = builder.Configuration["AppSettings:Secret"];
+var secretKey = "rockandrollaaaaasssddd";
 var tokenValidationParameters = new TokenValidationParameters
 {
     ValidateIssuer = true,
@@ -36,7 +36,7 @@ var tokenValidationParameters = new TokenValidationParameters
     ValidateLifetime = true,
     ValidateIssuerSigningKey = true,
     ValidIssuer = "NightPhotoServer",
-    ValidAudience = "YourValidAudience",
+    
     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
 };
 
