@@ -28,7 +28,10 @@ builder.Services.AddCors(options =>
     });
 });
 
-var secretKey = "rockandrollaaaaasssddd";
+var secretKey = builder.Configuration["AppSettings:Secret"];
+
+
+
 var tokenValidationParameters = new TokenValidationParameters
 {
     ValidateIssuer = true,
@@ -60,7 +63,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
 
 var app = builder.Build();
 
