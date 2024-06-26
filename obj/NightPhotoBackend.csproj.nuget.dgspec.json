@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\NightPhotoBackend.csproj": {}
+    "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\NightPhotoBackend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\NightPhotoBackend.csproj": {
+    "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\NightPhotoBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\NightPhotoBackend.csproj",
+        "projectUniqueName": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\NightPhotoBackend.csproj",
         "projectName": "NightPhotoBackend",
-        "projectPath": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\NightPhotoBackend.csproj",
+        "projectPath": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\NightPhotoBackend.csproj",
         "packagesPath": "C:\\Users\\Omistaja\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\obj\\",
+        "outputPath": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Omistaja\\AppData\\Roaming\\NuGet\\NuGet.Config",

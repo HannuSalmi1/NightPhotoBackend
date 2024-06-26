@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CEznaZKn+uQ=",
+  "dgSpecHash": "hH77kKxe7rQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\NightPhotoBackend.csproj",
+  "projectFilePath": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\NightPhotoBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Omistaja\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Omistaja\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -123,8 +123,8 @@ namespace NightPhotoBackend.Controllers
                 _logger.LogInformation("testingtesting1212121 -->" + duplicate.ToString());
                 return Problem("Username already taken");
             }
-                
-            
+
+            userTable.Role = "standard";
 
             await Console.Out.WriteLineAsync();
 
@@ -193,7 +193,7 @@ namespace NightPhotoBackend.Controllers
             return Ok(response);
         }
         // GET: api/checkValidity
-        [Authorize]
+        [Authorize(Roles = "standard")]
         [HttpGet("checkValidity")]
         public IActionResult CheckValidity()
         {

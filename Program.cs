@@ -5,6 +5,7 @@ using NightPhotoBackend.Helpers;
 using NightPhotoBackend.Services;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,7 +41,8 @@ var tokenValidationParameters = new TokenValidationParameters
     ValidateIssuerSigningKey = true,
     ValidIssuer = "NightPhotoServer",
     
-    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+    RoleClaimType = ClaimTypes.Role
 };
 
 builder.Services.AddAuthentication().AddJwtBearer(options =>
@@ -67,6 +69,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
+app.UseSwagger();
+app.UseSwaggerUI();
 if (app.Environment.IsDevelopment()) // by default enabled only for dev.
 {
     app.UseSwagger();
