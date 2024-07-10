@@ -380,7 +380,6 @@ C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\refint\NightP
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\NightPhotoBackend.pdb
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\NightPhotoBackend.genruntimeconfig.cache
 C:\Users\Omistaja\NP\Nightphoto\NightPhotoBackend\obj\Debug\net7.0\ref\NightPhotoBackend.dll
-C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\published\published\published\published\published\published\published\published\published\published\published\published\published\web.config
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\published\published\published\published\published\published\published\published\published\published\published\published\web.config
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\published\published\published\published\published\published\published\published\published\published\published\web.config
@@ -395,6 +394,7 @@ C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\publ
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\published\published\web.config
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\published\web.config
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\web.config
+C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\appsettings.Development.json
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\appsettings.json
 C:\Users\Omistaja\source\repos\NightPhotoBackend\bin\Debug\net7.0\published\Models\nightphotofrontend\.eslintrc.json

@@ -25,7 +25,7 @@ public partial class NightPhotoDbContext : DbContext
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("NightPhotoDB"));
         }
     }
 

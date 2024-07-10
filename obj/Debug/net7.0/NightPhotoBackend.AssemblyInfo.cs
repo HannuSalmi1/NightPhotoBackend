@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NightPhotoBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14da1b9cb049980a3c57019ea75143a3da371c9c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+014fcb5891b8d26c117839982c06e6488231445d")]
 [assembly: System.Reflection.AssemblyProductAttribute("NightPhotoBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NightPhotoBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<NightPhotoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NightPhotoDB")));
 
 builder.Services.AddScoped<IFolderCreator, FolderCreator>();
 builder.Services.AddScoped<IUserservice, UserService>();
@@ -30,8 +30,10 @@ builder.Services.AddCors(options =>
 });
 
 var secretKey = builder.Configuration["AppSettings:Secret"];
-
-
+if (string.IsNullOrEmpty(secretKey))
+{
+    throw new InvalidOperationException("Secret key not found in configuration.");
+}
 
 var tokenValidationParameters = new TokenValidationParameters
 {
@@ -40,7 +42,6 @@ var tokenValidationParameters = new TokenValidationParameters
     ValidateLifetime = true,
     ValidateIssuerSigningKey = true,
     ValidIssuer = "NightPhotoServer",
-    
     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
     RoleClaimType = ClaimTypes.Role
 };
@@ -66,7 +67,6 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 
-
 var app = builder.Build();
 
 app.UseSwagger();
@@ -88,4 +88,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 
