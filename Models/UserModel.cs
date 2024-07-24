@@ -15,4 +15,6 @@ public partial class UserModel
     public string? Password { get; set; }
 
     public string Role { get; set; }
+
+    public bool IsLoggedIn { get; set; }
 }

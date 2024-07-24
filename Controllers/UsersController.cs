@@ -44,10 +44,9 @@ namespace NightPhotoBackend.Controllers
             return await _context.UsersTable.ToListAsync();
         }
         [HttpGet("test")]
-        public string Testaus()
+        public IActionResult Testaus()
         {
-
-            return "<h1> ******** </h1>";
+            return Content("<h1> NightPhoto API </h1>", "text/html");
         }
         [HttpGet("getImages")]
         public async Task<ActionResult<IEnumerable<string>>> GetImages()
@@ -183,24 +182,78 @@ namespace NightPhotoBackend.Controllers
 
 
         [HttpPost("authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest model)
+        public IActionResult Authenticate(AuthenticateRequest model )
         {
             var response = _userService.Authenticate(model);
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
+           
+
 
             return Ok(response);
         }
         // GET: api/checkValidity
         [Authorize(Roles = "standard")]
         [HttpGet("checkValidity")]
-        public IActionResult CheckValidity()
+        public async Task<IActionResult> CheckValidity()
         {
+            // Get the user ID from the JWT token claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized(new { message = "User ID not found in token" });
+            }
+
+            // Retrieve the user from the database
+            var user = await _context.UsersTable.FindAsync(int.Parse(userId));
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            // Modify the user entity as needed
+            user.IsLoggedIn = true; // Example modification
+
+            // Save the changes to the database
+            _context.UsersTable.Update(user);
+            await _context.SaveChangesAsync();
+
             // If the request reaches this point, it means the JWT token is valid
             var response = new { message = "JWT is valid" };
             return Ok(response); // This will return a JSON response
         }
 
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            // Clear the access token from cookies
+            if (Request.Cookies.ContainsKey("access_token"))
+            {
+                Response.Cookies.Delete("access_token");
+            }
+
+            // Get the user ID from the JWT token claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized(new { message = "User ID not found in token" });
+            }
+
+            // Retrieve the user from the database
+            var user = await _context.UsersTable.FindAsync(int.Parse(userId));
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            // Modify the user entity as needed
+            user.IsLoggedIn = false; // Example modification
+
+            // Save the changes to the database
+            _context.UsersTable.Update(user);
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Logged out successfully" });
+        }
     }
 }
