@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "u0Het5Tn0BZdn9q4FRoSIpWWHxXXDIFKMQbYQRp2uvo=",
+  "Hash": "LruY+6aNqY/r161ofGwrKJCSWA+UeYvUYbVqJOBAvUE=",
   "Source": "NightPhotoBackend",
   "BasePath": "_content/NightPhotoBackend",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\kypros\\kuva2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\Tarzan123\\diego-ph-5LOhydOtTKU-unsplash.jpg",
+      "SourceId": "NightPhotoBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\",
+      "BasePath": "_content/NightPhotoBackend",
+      "RelativePath": "Images/Tarzan123/diego-ph-5LOhydOtTKU-unsplash.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Tarzan123\\diego-ph-5LOhydOtTKU-unsplash.jpg"
     }
   ]
 }

@@ -33,7 +33,7 @@ namespace NightPhotoBackend.Controllers
         }
 
         // GET: api/Users
-        [Authorize]
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsersTables()
         {
@@ -159,8 +159,9 @@ namespace NightPhotoBackend.Controllers
             return (_context.UsersTable?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        [Authorize]
+        [Authorize(Roles = "standard")]
         [HttpPost("UploadImage")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> UploadImage(IFormFile file)
         {
             var userName = User.FindFirstValue("username");
