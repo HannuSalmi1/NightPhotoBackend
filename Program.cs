@@ -6,6 +6,7 @@ using NightPhotoBackend.Services;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Security.Claims;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,7 +68,19 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.HttpsPort = 443;
+});
 var app = builder.Build();
+
 
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -76,6 +89,8 @@ if (app.Environment.IsDevelopment()) // by default enabled only for dev.
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseForwardedHeaders();
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

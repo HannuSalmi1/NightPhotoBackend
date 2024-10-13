@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\Tarzan123\\diego-ph-5LOhydOtTKU-unsplash.jpg",
+      "PackagePath": "staticwebassets\\Images\\Tarzan123\\diego-ph-5LOhydOtTKU-unsplash.jpg"
+    },
+    {
       "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\ateena\\kuva3.jpg",
       "PackagePath": "staticwebassets\\Images\\ateena\\kuva3.jpg"
     },

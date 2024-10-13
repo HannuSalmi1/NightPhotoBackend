@@ -1,23 +1,27 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\ateena\\kuva3.jpg",
+      "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\Tarzan123\\diego-ph-5LOhydOtTKU-unsplash.jpg",
+      "PackagePath": "staticwebassets\\Images\\Tarzan123\\diego-ph-5LOhydOtTKU-unsplash.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\ateena\\kuva3.jpg",
       "PackagePath": "staticwebassets\\Images\\ateena\\kuva3.jpg"
     },
     {
-      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\ateena\\kuva4.jpg",
+      "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\ateena\\kuva4.jpg",
       "PackagePath": "staticwebassets\\Images\\ateena\\kuva4.jpg"
     },
     {
-      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\halloumi\\kuvatesti.jpg",
+      "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\halloumi\\kuvatesti.jpg",
       "PackagePath": "staticwebassets\\Images\\halloumi\\kuvatesti.jpg"
     },
     {
-      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\kypros\\kuukuva.jpg",
+      "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\kypros\\kuukuva.jpg",
       "PackagePath": "staticwebassets\\Images\\kypros\\kuukuva.jpg"
     },
     {
-      "Id": "C:\\Users\\Omistaja\\NP\\Nightphoto\\NightPhotoBackend\\wwwroot\\Images\\kypros\\kuva2.jpg",
+      "Id": "C:\\Users\\Omistaja\\source\\repos\\NightPhotoBackend\\wwwroot\\Images\\kypros\\kuva2.jpg",
       "PackagePath": "staticwebassets\\Images\\kypros\\kuva2.jpg"
     },
     {
